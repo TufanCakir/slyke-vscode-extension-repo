@@ -1,0 +1,44 @@
+{
+  "name": "vscode-slyke",
+  "displayName": "Slyke",
+  "description": "Sprachunterstützung für die Slyke-Programmiersprache",
+  "icon": "icons/slyke-icon.png",
+  "publisher": "tufan-cakir",
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TufanCakir/slyke-project.git"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "slyke",
+        "aliases": [
+          "Slyke",
+          "slyke"
+        ],
+        "extensions": [
+          ".sk"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/slyke-icon.svg",
+          "dark": "./icons/slyke-icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "slyke",
+        "scopeName": "source.slyke",
+        "path": "./syntaxes/slyke.tmLanguage.json"
+      }
+    ]
+  }
+}

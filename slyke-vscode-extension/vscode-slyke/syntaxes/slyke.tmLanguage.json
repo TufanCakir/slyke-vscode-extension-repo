@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Slyke",
+  "scopeName": "source.slyke",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#tags"
+    },
+    {
+      "include": "#statements"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "name": "comment.line.number-sign.slyke",
+      "match": "#.*$"
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.slyke",
+          "match": "\\b(if|while|for|return|component)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.slyke",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.slyke",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "statements": {
+      "patterns": [
+        {
+          "name": "keyword.other.slyke",
+          "match": "\\bmessage\\b"
+        },
+        {
+          "name": "string.quoted.double.slyke",
+          "begin": "message\\s+\"",
+          "end": "\"",
+          "beginCaptures": {
+            "0": { "name": "keyword.other.slyke" }
+          },
+          "patterns": [
+            {
+              "name": "constant.character.escape.slyke",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": {
+      "patterns": [
+        {
+          "name": "entity.name.tag.slyke",
+          "match": "<(echo|button)\\b"
+        },
+        {
+          "name": "punctuation.definition.tag.begin.slyke",
+          "match": "<"
+        },
+        {
+          "name": "punctuation.definition.tag.end.slyke",
+          "match": "\\/>"
+        },
+        {
+          "name": "entity.other.attribute-name.slyke",
+          "match": "\\b(message|text|onClick)\\b(?==)"
+        },
+        {
+          "name": "string.quoted.attribute.slyke",
+          "begin": "(?<==)\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.slyke",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
