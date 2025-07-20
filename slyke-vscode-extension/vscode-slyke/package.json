@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/TufanCakir/slyke-project.git"
+    "url": "https://github.com/TufanCakir/slyke-vscode-extension-repo.git"
   },
   "contributes": {
     "languages": [
@@ -38,6 +38,13 @@
         "language": "slyke",
         "scopeName": "source.slyke",
         "path": "./syntaxes/slyke.tmLanguage.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "Slyke Theme",
+        "uiTheme": "vs-dark",
+        "path": "./theme/theme.json"
       }
     ]
   }
