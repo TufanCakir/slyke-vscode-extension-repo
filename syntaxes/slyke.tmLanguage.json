@@ -28,7 +28,7 @@
       "patterns": [
         {
           "name": "keyword.control.slyke",
-          "match": "\\b(if|while|for|return|component)\\b"
+          "match": "\\b(if|while|for|return|component|signal)\\b"
         }
       ]
     },
@@ -68,31 +68,38 @@
     "tags": {
       "patterns": [
         {
-          "begin": "(<)(echo|button|template|Variable|Display|Box)(\\b|\\s*|\\/?>)",
+          "begin": "(<)(Box)(>)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.slyke" },
+            "2": { "name": "entity.name.tag.slyke" },
+            "3": { "name": "punctuation.definition.tag.end.slyke" }
+          },
+          "end": "(</)(Box)(>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.slyke" },
+            "2": { "name": "entity.name.tag.slyke" },
+            "3": { "name": "punctuation.definition.tag.end.slyke" }
+          },
+          "name": "meta.tag.slyke.container",
+          "patterns": [
+            { "include": "#tag-attributes" },
+            { "include": "#strings" },
+            { "include": "#comments" }
+          ]
+        },
+        {
+          "begin": "(<)(echo|button|template|Variable|Display|ListDisplay|ReactiveState|Else|Component|Effect|Bind|Route|Router|List|Item|EventSource|Dialog|Modal|Storefront|ProductCard)(\\s*\\/?>)",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.tag.begin.slyke" },
             "2": { "name": "entity.name.tag.slyke" }
           },
-          "end": "(\\s*\\/?>)",
-          "endCaptures": {
-            "1": { "name": "punctuation.definition.tag.end.slyke" }
-          },
+          "end": "(?<!.)",
           "name": "meta.tag.slyke",
           "patterns": [
             {
               "include": "#tag-attributes"
             }
           ]
-        },
-        {
-          "begin": "(</)(echo|button|template|Variable|Display|Box)(>)",
-          "beginCaptures": {
-            "1": { "name": "punctuation.definition.tag.begin.slyke" },
-            "2": { "name": "entity.name.tag.slyke" },
-            "3": { "name": "punctuation.definition.tag.end.slyke" }
-          },
-          "end": "(?=>)",
-          "name": "meta.tag.slyke"
         }
       ]
     },
@@ -100,7 +107,7 @@
       "patterns": [
         {
           "name": "entity.other.attribute-name.slyke",
-          "match": "\\b(message|text|onClick|popUp|name|value)\\b(?==)"
+          "match": "\\b(message|text|onClick|popUp|name|value|url|as|over|key|path|onMessage|onOpen|onClose|isOpen|center|zoom|markers|type|data|title|category|productId|items)\\b(?==)"
         },
         {
           "name": "string.quoted.attribute.slyke",
@@ -110,17 +117,6 @@
             {
               "name": "constant.character.escape.slyke",
               "match": "\\\\."
-            },
-            {
-              "begin": "\\{",
-              "end": "\\}",
-              "name": "variable.other.interpolation.slyke",
-              "patterns": [
-                {
-                  "name": "variable.name.slyke",
-                  "match": "[a-zA-Z_][a-zA-Z0-9_]*"
-                }
-              ]
             }
           ]
         }
